@@ -346,40 +346,37 @@ function initContactForm() {
   const form = document.getElementById('contactForm');
   const formMessage = document.getElementById('formMessage');
 
-  form.addEventListener('submit', async (e) => {
+  form.addEventListener('submit', (e) => {
     e.preventDefault();
 
     const submitBtn = form.querySelector('.form__submit');
     submitBtn.classList.add('loading');
 
-    try {
-      const formData = new FormData(form);
-      const response = await fetch(form.action, {
-        method: 'POST',
-        body: formData,
-        headers: {
-          'Accept': 'application/json'
-        }
-      });
+    // 使用邮件客户端提交
+    const name = form.name.value;
+    const email = form.email.value;
+    const subject = form.subject.value || '旅行网站联系消息';
+    const message = form.message.value;
 
-      submitBtn.classList.remove('loading');
-
-      if (response.ok) {
-        formMessage.textContent = '消息已发送成功！我会尽快回复您。';
-        formMessage.className = 'form__message success';
-        form.reset();
-      } else {
-        throw new Error('提交失败');
-      }
-    } catch (error) {
-      submitBtn.classList.remove('loading');
-      formMessage.textContent = '发送失败，请稍后重试。';
-      formMessage.className = 'form__message error';
-    }
+    const mailtoLink = `mailto:lkeke769@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(`姓名: ${name}\n邮箱: ${email}\n消息: ${message}`)}`;
 
     setTimeout(() => {
-      formMessage.className = 'form__message';
-    }, 5000);
+      submitBtn.classList.remove('loading');
+      
+      // 尝试打开邮件客户端
+      window.location.href = mailtoLink;
+      
+      // 显示成功消息
+      formMessage.textContent = '请在打开的邮件客户端中确认发送！';
+      formMessage.className = 'form__message success';
+      
+      // 重置表单
+      form.reset();
+
+      setTimeout(() => {
+        formMessage.className = 'form__message';
+      }, 5000);
+    }, 1000);
   });
 }
 
