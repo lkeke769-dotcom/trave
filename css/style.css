@@ -1362,6 +1362,75 @@ button {
 }
 
 /* ==================== 
+   Contact Email Info 
+   ==================== */
+.contact__email-info {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background: var(--bg-secondary);
+  border-radius: var(--radius-lg);
+  border: 1px solid #e5e7eb;
+}
+
+.contact__email-title {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: var(--text-primary);
+}
+
+.contact__email-text {
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+  margin-bottom: 1rem;
+}
+
+.contact__email-box {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: var(--bg-primary);
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius);
+  border: 1px solid #e5e7eb;
+}
+
+.contact__email-address {
+  flex: 1;
+  font-weight: 500;
+  color: var(--primary);
+  font-family: 'Courier New', monospace;
+}
+
+.contact__email-copy {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius);
+  background: var(--bg-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition);
+  border: 1px solid #e5e7eb;
+}
+
+.contact__email-copy:hover {
+  background: var(--primary);
+  border-color: var(--primary);
+}
+
+.contact__email-copy svg {
+  width: 18px;
+  height: 18px;
+  color: var(--text-secondary);
+  transition: var(--transition);
+}
+
+.contact__email-copy:hover svg {
+  color: white;
+}
+
+/* ==================== 
    Footer 
    ==================== */
 .footer {
