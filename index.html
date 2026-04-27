@@ -636,13 +636,15 @@
                     </div>
                 </div>
 
-                <form class="contact__form" id="contactForm" action="https://formspree.io/f/xeqwdjrd" method="POST">
+                <form action="https://formspree.io/f/mkgnrvzz" method="POST" class="contact__form" id="contactForm">
+                    <input type="hidden" name="_subject" value="旅行网站新消息">
+                    <input type="hidden" name="_captcha" value="false">
                     <div class="form__group">
-                        <input type="text" class="form__input" id="name" name="from_name" placeholder="您的姓名" required>
+                        <input type="text" class="form__input" id="name" name="name" placeholder="您的姓名" required>
                         <label class="form__label" for="name">姓名</label>
                     </div>
                     <div class="form__group">
-                        <input type="email" class="form__input" id="email" name="reply_to" placeholder="您的邮箱" required>
+                        <input type="email" class="form__input" id="email" name="email" placeholder="您的邮箱" required>
                         <label class="form__label" for="email">邮箱</label>
                     </div>
                     <div class="form__group">
@@ -655,13 +657,7 @@
                     </div>
                     <button type="submit" class="btn btn--primary form__submit">
                         <span class="btn__text">发送消息</span>
-                        <span class="btn__loading">
-                            <svg class="btn__spinner" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <circle cx="12" cy="12" r="10" stroke-dasharray="60" stroke-dashoffset="15"/>
-                            </svg>
-                        </span>
                     </button>
-                    <div class="form__message" id="formMessage"></div>
                 </form>
             </div>
         </div>
