@@ -341,7 +341,7 @@ function initMapModal() {
 
 // ==================== 
 // Contact Form
-// ==================== 
+// ====================
 function initContactForm() {
   const form = document.getElementById('contactForm');
   const formMessage = document.getElementById('formMessage');
@@ -352,23 +352,30 @@ function initContactForm() {
     const submitBtn = form.querySelector('.form__submit');
     submitBtn.classList.add('loading');
 
-    const formData = {
-      name: form.name.value,
-      email: form.email.value,
-      subject: form.subject.value,
-      message: form.message.value
-    };
+    try {
+      const formData = new FormData(form);
+      const response = await fetch(form.action, {
+        method: 'POST',
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
+      });
 
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 1500));
+      submitBtn.classList.remove('loading');
 
-    submitBtn.classList.remove('loading');
-
-    // Success message
-    formMessage.textContent = '消息已发送成功！我会尽快回复您。';
-    formMessage.className = 'form__message success';
-
-    form.reset();
+      if (response.ok) {
+        formMessage.textContent = '消息已发送成功！我会尽快回复您。';
+        formMessage.className = 'form__message success';
+        form.reset();
+      } else {
+        throw new Error('提交失败');
+      }
+    } catch (error) {
+      submitBtn.classList.remove('loading');
+      formMessage.textContent = '发送失败，请稍后重试。';
+      formMessage.className = 'form__message error';
+    }
 
     setTimeout(() => {
       formMessage.className = 'form__message';
