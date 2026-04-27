@@ -636,13 +636,13 @@
                     </div>
                 </div>
 
-                <div class="contact__form" id="contactForm">
+                <form class="contact__form" id="contactForm" action="https://formspree.io/f/xeqwdjrd" method="POST">
                     <div class="form__group">
-                        <input type="text" class="form__input" id="name" name="name" placeholder="您的姓名" required>
+                        <input type="text" class="form__input" id="name" name="from_name" placeholder="您的姓名" required>
                         <label class="form__label" for="name">姓名</label>
                     </div>
                     <div class="form__group">
-                        <input type="email" class="form__input" id="email" name="email" placeholder="您的邮箱" required>
+                        <input type="email" class="form__input" id="email" name="reply_to" placeholder="您的邮箱" required>
                         <label class="form__label" for="email">邮箱</label>
                     </div>
                     <div class="form__group">
@@ -653,7 +653,7 @@
                         <textarea class="form__textarea" id="message" name="message" rows="5" placeholder="请输入您的消息..." required></textarea>
                         <label class="form__label" for="message">消息</label>
                     </div>
-                    <button type="button" class="btn btn--primary form__submit" onclick="sendEmail()">
+                    <button type="submit" class="btn btn--primary form__submit">
                         <span class="btn__text">发送消息</span>
                         <span class="btn__loading">
                             <svg class="btn__spinner" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -662,22 +662,7 @@
                         </span>
                     </button>
                     <div class="form__message" id="formMessage"></div>
-                    
-                    <!-- 邮箱信息 -->
-                    <div class="contact__email-info">
-                        <h4 class="contact__email-title">直接联系</h4>
-                        <p class="contact__email-text">您也可以直接发送邮件到：</p>
-                        <div class="contact__email-box">
-                            <span class="contact__email-address" id="emailAddress">lkeke769@gmail.com</span>
-                            <button class="contact__email-copy" onclick="copyEmail()" aria-label="复制邮箱">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
-                                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
-                                </svg>
-                            </button>
-                        </div>
-                    </div>
-                </div>
+                </form>
             </div>
         </div>
     </section>

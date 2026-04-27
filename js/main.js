@@ -340,82 +340,18 @@ function initMapModal() {
 }
 
 // ==================== 
-// Contact Form
+// Contact Form - Formspree
 // ====================
 function initContactForm() {
-  // 表单初始化
-}
-
-// 发送邮件函数
-function sendEmail() {
   const form = document.getElementById('contactForm');
   const formMessage = document.getElementById('formMessage');
-  const submitBtn = form.querySelector('.form__submit');
-  
-  // 获取表单数据
-  const name = form.name.value;
-  const email = form.email.value;
-  const subject = form.subject.value || '旅行网站联系消息';
-  const message = form.message.value;
-  
-  // 简单验证
-  if (!name || !email || !message) {
-    formMessage.textContent = '请填写所有必填字段！';
-    formMessage.className = 'form__message error';
-    setTimeout(() => {
-      formMessage.className = 'form__message';
-    }, 3000);
-    return;
-  }
-  
-  submitBtn.classList.add('loading');
-  
-  // 构建邮件内容
-  const emailContent = `姓名: ${name}\n邮箱: ${email}\n主题: ${subject}\n消息: ${message}`;
-  const mailtoLink = `mailto:lkeke769@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(emailContent)}`;
-  
-  setTimeout(() => {
-    submitBtn.classList.remove('loading');
-    
-    // 尝试打开邮件客户端
-    window.location.href = mailtoLink;
-    
-    // 显示成功消息
-    formMessage.textContent = '请在打开的邮件客户端中确认发送！';
-    formMessage.className = 'form__message success';
-    
-    // 重置表单
-    form.reset();
 
-    setTimeout(() => {
-      formMessage.className = 'form__message';
-    }, 5000);
-  }, 1000);
-}
-
-// 复制邮箱函数
-function copyEmail() {
-  const emailAddress = document.getElementById('emailAddress');
-  const formMessage = document.getElementById('formMessage');
-  
-  // 复制到剪贴板
-  navigator.clipboard.writeText(emailAddress.textContent)
-    .then(() => {
-      formMessage.textContent = '邮箱地址已复制到剪贴板！';
-      formMessage.className = 'form__message success';
-      
-      setTimeout(() => {
-        formMessage.className = 'form__message';
-      }, 3000);
-    })
-    .catch(err => {
-      formMessage.textContent = '复制失败，请手动复制！';
-      formMessage.className = 'form__message error';
-      
-      setTimeout(() => {
-        formMessage.className = 'form__message';
-      }, 3000);
-    });
+  // 让Formspree处理表单提交
+  form.addEventListener('submit', async (e) => {
+    // Formspree会处理提交，我们只添加loading效果
+    const submitBtn = form.querySelector('.form__submit');
+    submitBtn.classList.add('loading');
+  });
 }
 
 // ==================== 
