@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://yourusername.github.io/trave/sitemap.xml
+Sitemap: https://lkeke769-dotcom.github.io/trave/sitemap.xml
