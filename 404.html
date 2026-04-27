@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - 页面未找到 | 旅行日志</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .error-page {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: var(--bg-gradient);
+            color: white;
+            padding: 2rem;
+        }
+        
+        .error-content {
+            max-width: 500px;
+        }
+        
+        .error-code {
+            font-size: 6rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+        
+        .error-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .error-text {
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        
+        .error-btn {
+            display: inline-block;
+            padding: 0.75rem 2rem;
+            background: white;
+            color: #667eea;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .error-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <div class="error-page">
+        <div class="error-content">
+            <h1 class="error-code">404</h1>
+            <h2 class="error-title">哎呀！页面迷路了</h2>
+            <p class="error-text">看起来你来到了一个不存在的页面。别担心，让我们带你回到正确的旅程。</p>
+            <a href="/" class="error-btn">返回首页</a>
+        </div>
+    </div>
+</body>
+</html>
