@@ -354,7 +354,7 @@ function initContactForm() {
 
     const formData = new FormData(form);
 
-    fetch('https://formsubmit.co/ajax/lkeke769@gmail.com', {
+    fetch('https://formsubmit.co/ajax/9f7501b071c01aebf0e0b843d0245f2', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
