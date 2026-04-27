@@ -346,11 +346,43 @@ function initContactForm() {
   const form = document.getElementById('contactForm');
   const formMessage = document.getElementById('formMessage');
 
-  // 让Formspree处理表单提交
-  form.addEventListener('submit', async (e) => {
-    // Formspree会处理提交，我们只添加loading效果
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+
     const submitBtn = form.querySelector('.form__submit');
     submitBtn.classList.add('loading');
+
+    // 使用Formspree API发送邮件
+    fetch('https://formspree.io/f/mkgnrvzz', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify({
+        name: form.name.value,
+        email: form.email.value,
+        subject: form.subject.value || '旅行网站联系消息',
+        message: form.message.value
+      })
+    })
+    .then(response => response.json())
+    .then(data => {
+      submitBtn.classList.remove('loading');
+      if (data.ok) {
+        formMessage.textContent = '消息已发送成功！我会尽快回复您。';
+        formMessage.className = 'form__message success';
+        form.reset();
+      } else {
+        formMessage.textContent = '发送失败，请稍后重试。';
+        formMessage.className = 'form__message error';
+      }
+    })
+    .catch(error => {
+      submitBtn.classList.remove('loading');
+      formMessage.textContent = '发送失败，请稍后重试。';
+      formMessage.className = 'form__message error';
+    });
   });
 }
 
